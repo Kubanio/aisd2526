@@ -1,61 +1,49 @@
 #include <iostream>
 using namespace std;
-int A[]={2,14,5,1,33,85,234,62,72,23,53,8,12,41,12};
+int A[]={2,14,5,1,33,85};
+long long porownania = 0;
+long long przypisania = 0;
+void Zliczenie();
 void Wstawianie(int b);
 int main()
 {
-	int rozmiar = sizeof(A) / sizeof(A[0]);//liczy w bajtach wielksoc calej tabeli 
+	int rozmiar = sizeof(A) / sizeof(A[0]);
 	for(int i =0;i<rozmiar;i++)
 	cout<<A[i]<<" ";
-	cout<<endl;
-	if (rozmiar % 2==0)
+	cout<<endl; 
+	for (int i = 0;i<rozmiar;i++)
 		{
-			for (int i = 0;i<rozmiar;i+=2)
-			{
-				Wstawianie(i);
-			}	
+			Wstawianie(i);
 		}
-	else 
-		{
-			for (int i = 1;i<rozmiar;i+=2)
-			{
-				Wstawianie(i);
-			}
-		}
+		
 	for(int i =0;i<rozmiar;i++)
 		cout<<A[i]<<" ";
+	Zliczenie();
 	return 0;
 
 } 	
  void Wstawianie(int b)
  {
-	int temp,x,y;
-	if (A[b] > A[b+1])
-	 	{
-			temp=A[b+1];
-			A[b+1] = A[b];
- 			A[b] = temp;
-		 }
-		x = A[b];
- 		y=A[b+1];
+ 	int x = A[b];
  	int j=b-1;
+ 	przypisania+=2;
  	while (j>=0 && A[j]>x)
  	{
- 		A[j+1]= A[j];
+ 		porownania +=2;
+		 A[j+1]= A[j];
  		j-=1;
+ 		przypisania +=1;
 	 }
- 	A[j+1]=x;
- 		// sprawdzanie drugiego elem.
- 	j=b;
- 	while (j>=0 && A[j]>y)
- 	{
- 		A[j+1]= A[j];
- 		j-=1;
-	}
- 	A[j+1]=y;
- 	
+ 	porownania+=1;
+	 A[j+1]=x;
+ 	przypisania+=1;
  }
- 
+ void Zliczenie()
+{
+ 	cout <<"\n\n";
+ 	cout<<"w tymalgorytmie masz "<<przypisania<<" przypisan"<<endl;
+ 	cout<<"w tymalgorytmie masz "<<porownania<<" porownan"<<endl;
+}
 
  
  

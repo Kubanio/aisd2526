@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
-int A[]={2,14,5,1,33,85,234,62,72,23,53,8,12,41,12};
+void Zliczenie();
+long long porownania = 0;
+long long przypisania = 0;
+int A[]={2,14,5,1,33,85};
 void Wstawianie(int b);
 int main()
 {
@@ -24,36 +27,53 @@ int main()
 		}
 	for(int i =0;i<rozmiar;i++)
 		cout<<A[i]<<" ";
+	
+	Zliczenie();
 	return 0;
 
 } 	
  void Wstawianie(int b)
  {
 	int temp,x,y;
+	porownania +=1;
 	if (A[b] > A[b+1])
 	 	{
 			temp=A[b+1];
 			A[b+1] = A[b];
  			A[b] = temp;
+ 			przypisania += 3;
 		 }
 		x = A[b];
  		y=A[b+1];
+ 		przypisania += 2;
  	int j=b-1;
  	while (j>=0 && A[j]>x)
  	{
+ 		porownania +=2;
  		A[j+1]= A[j];
- 		j-=1;
+ 		przypisania +=1;
+		j-=1;
 	 }
- 	A[j+1]=x;
- 		// sprawdzanie drugiego elem.
+ 	porownania +=1;
+	A[j+1]=x;
+ 	przypisania +=1;
  	j=b;
  	while (j>=0 && A[j]>y)
  	{
- 		A[j+1]= A[j];
- 		j-=1;
+ 		porownania +=2;
+		 A[j+1]= A[j];
+ 		przypisania +=1;
+		j-=1;
 	}
- 	A[j+1]=y;
- 	
+ 	porownania+=1;//albo jeden albo dwa zaleznosci od tego ktory war.wyszedl falsz
+	A[j+1]=y;
+ 	przypisania++;
+ }
+ void Zliczenie()
+ {
+ 	cout <<"\n\n";
+ 	cout<<"w tymalgorytmie masz "<<przypisania<<" przypisan"<<endl;
+ 	cout<<"w tymalgorytmie masz "<<porownania<<" porownan"<<endl;
  }
  
 
