@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int A[] = {2,14,5,1,33,85};
+int A[] = {2 ,14 ,5 ,1 ,33 ,85};
 int rozmiar = sizeof(A) / sizeof(A[0]);
 void Merge(int p,int s,int k);
 void SortMerge(int p, int k);
@@ -33,6 +33,7 @@ void Merge(int p,int s,int k)
 		L[i]= A[i+p]; 
     	przypisania += 1;
 	}
+	porownania += 1 ;
 	for (int j = 0; j< n2;j++)
 		{
 		porownania += 1;
@@ -43,7 +44,7 @@ void Merge(int p,int s,int k)
 	przypisania += 2;
 	for (int l=p;l<=k;l++)
 	{
-		porownania+=2;//jedno za if a drugi za war z for 
+		porownania+=2;
 		if (L[i]<=R[j])
 		{
 			
@@ -58,6 +59,7 @@ void Merge(int p,int s,int k)
 			przypisania += 2;
 		}
 	}
+	porownania += 1;
 	delete[] L; 
     delete[] R;	 
 }
@@ -76,8 +78,8 @@ void SortMerge(int p, int k)
  void Zliczenie()
 {
  	cout <<"\n\n";
- 	cout<<"w tymalgorytmie masz "<<przypisania<<" przypisan"<<endl;
- 	cout<<"w tymalgorytmie masz "<<porownania<<" porownan"<<endl;	
+ 	cout<<"w tym algorytmie masz "<<przypisania<<" przypisan"<<endl;
+ 	cout<<"w tym algorytmie masz "<<porownania<<" porownan"<<endl;	
 }
 
 

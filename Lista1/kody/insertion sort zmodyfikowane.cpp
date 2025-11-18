@@ -3,7 +3,7 @@ using namespace std;
 void Zliczenie();
 long long porownania = 0;
 long long przypisania = 0;
-int A[]={2,14,5,1,33,85};
+int A[]={2 ,14 ,5 ,1 ,33 ,85};
 void Wstawianie(int b);
 int main()
 {
@@ -54,10 +54,17 @@ int main()
  		przypisania +=1;
 		j-=1;
 	 }
- 	porownania +=1;
-	A[j+1]=x;
+ 	if (j >= 0) 
+		{
+    	porownania += 2 ;
+    	} 
+	else 
+		{
+    	porownania += 1 ;
+    	}
+    A[j+1]=x;
  	przypisania +=1;
- 	j=b;
+	j=b;
  	while (j>=0 && A[j]>y)
  	{
  		porownania +=2;
@@ -65,15 +72,19 @@ int main()
  		przypisania +=1;
 		j-=1;
 	}
- 	porownania+=1;//albo jeden albo dwa zaleznosci od tego ktory war.wyszedl falsz
+	if (j >= 0) {
+    	porownania += 2; 
+	} else {
+    	porownania += 1; 
+	}
 	A[j+1]=y;
- 	przypisania++;
+ 	przypisania+=1;
  }
  void Zliczenie()
  {
  	cout <<"\n\n";
- 	cout<<"w tymalgorytmie masz "<<przypisania<<" przypisan"<<endl;
- 	cout<<"w tymalgorytmie masz "<<porownania<<" porownan"<<endl;
+ 	cout<<"w tym algorytmie masz "<<przypisania<<" przypisan"<<endl;
+ 	cout<<"w tym algorytmie masz "<<porownania<<" porownan"<<endl;
  }
  
 

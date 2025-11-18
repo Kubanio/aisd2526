@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int A[] = {12,54,11,41,541,12,52,64,38,3,53,18};
+int A[] = {2 ,14 ,5 ,1 ,33 ,85};
 int rozmiar = sizeof(A) / sizeof(A[0]);
 int Left(int i);
 int Mid(int i);
@@ -44,25 +44,34 @@ void Heapify(int i,int heapsize)
 	int r = Right(i);
 	int largest=i;
 	porownania+=1;
-	if (l < heapsize && A[l] > A[largest])
-    	{
-		porownania+=1;
-		largest = l;
-		przypisania+=1;
-		}
-    porownania+=1;
-	if (m < heapsize && A[m] > A[largest])
-    	{
-		porownania+=1;
-		largest = m;
-		przypisania+=1;
+	if (l < heapsize) 
+		{
+			porownania+=1;
+			if(A[l] > A[largest])	
+			{
+				largest = l;
+				przypisania+=1;
+			}
 		}
 	porownania+=1;
-	if (r < heapsize && A[r] > A[largest])
-    	{
-		porownania+=1;
-		largest = r;
-		przypisania+=1;
+	if (m < heapsize) 
+		{
+			porownania+=1;
+			if(A[m] > A[largest])	
+			{
+				largest = m;
+				przypisania+=1;
+			}
+		}
+	porownania+=1;
+	if (r < heapsize) 
+		{
+			porownania+=1;
+			if(A[r] > A[largest])	
+			{
+				largest = r;
+				przypisania+=1;
+			}
 		}
 	int temp;
 	porownania+=1;
@@ -78,7 +87,7 @@ void Heapify(int i,int heapsize)
 
 void Build_Heap(int heapsize)
 {
-	for(int i = ((rozmiar+1)/3); i >=0;i--)
+	for(int i = ((rozmiar-1)/3); i >=0;i--)
 		Heapify(i,heapsize);		
 }
 
@@ -98,6 +107,6 @@ void HeapSort(int heapsize)
  void Zliczenie()
 {
  	cout <<"\n\n";
- 	cout<<"w tymalgorytmie masz "<<przypisania<<" przypisan"<<endl;
- 	cout<<"w tymalgorytmie masz "<<porownania<<" porownan"<<endl;	
+ 	cout<<"w tym algorytmie masz "<<przypisania<<" przypisan"<<endl;
+ 	cout<<"w tym algorytmie masz "<<porownania<<" porownan"<<endl;	
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-int A[] = {2,14,5,1,33,85};
+int A[] = {2 ,14 ,5 ,1 ,33 ,85};
 int rozmiar = sizeof(A) / sizeof(A[0]);
 void Merge(int p,int jedtrz,int dwitrz,int k);
 void SortMerge(int p, int k);
@@ -47,30 +47,44 @@ void Merge(int p,int jedtrz,int dwitrz,int k)
 		}
 	int i = 0 ,j = 0, m=0;
 	przypisania +=3;
-	for (int l=p;l<=k;l++)
-	{		
-		if (L[i]<=S[j] && L[i]<=R[m])	
-		{
-			porownania += 2;
-			A[l] = L[i];
-			i+=1;
-			przypisania += 2;
-		}
-		else if (L[i]>S[j] && S[j]<=R[m])
-		{
-			porownania += 3;//2 z else if i przynajmniej jedno z poprzedniego liczymy optymistycznie
-			A[l]=S[j];
-			j+=1;
-			przypisania += 2;
-		}
-		else if (L[i]>R[m] && S[j]>R[m])
-		{
-			porownania += 5;//2 z else if i  jeden z poprzednich przeszedl do 2  war i tam false wiec 2 +1
-			A[l]=R[m];
-			m+=1;
-			przypisania += 2;
-		}
-	}
+for (int l = p; l <= k; l++)
+{		
+    porownania += 1; 
+    if (L[i] <= S[j])
+    {
+        porownania += 1; 
+        if (L[i] <= R[m])
+        {
+            A[l] = L[i];
+            i += 1;
+            przypisania += 2;
+            continue;
+        }
+    }
+    porownania += 1; 
+    if (L[i] > S[j])
+    {
+        porownania += 1;
+        if (S[j] <= R[m])
+        {
+            A[l] = S[j];
+            j += 1;
+            przypisania += 2;
+            continue;
+        }
+    }
+    porownania += 1;
+    if (L[i] > R[m])
+    {
+        porownania += 1;
+        if (S[j] > R[m])
+        {
+            A[l] = R[m];
+            m += 1;
+            przypisania += 2;
+        }
+    }
+}
 	delete[] L; 
     delete[] S;
 	delete[] R;	 
@@ -92,6 +106,6 @@ void SortMerge(int p, int k)
 void Zliczenie()
 {
  	cout <<"\n\n";
- 	cout<<"w tymalgorytmie masz "<<przypisania<<" przypisan"<<endl;
- 	cout<<"w tymalgorytmie masz "<<porownania<<" porownan"<<endl;	
+ 	cout<<"w tym algorytmie masz "<<przypisania<<" przypisan"<<endl;
+ 	cout<<"w tym algorytmie masz "<<porownania<<" porownan"<<endl;	
 }
