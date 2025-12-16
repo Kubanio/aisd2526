@@ -14,7 +14,7 @@ void test_radix(int n, int d, int seed, ofstream &results_file) {
     int *A = new int[n];
     srand(seed);
     for (int i = 0; i < n; i++) {
-        A[i] = rand() %100000-50000; 
+		A[i] =(rand()%100000-50000);
     }
     porownania = 0;
     przypisania = 0;

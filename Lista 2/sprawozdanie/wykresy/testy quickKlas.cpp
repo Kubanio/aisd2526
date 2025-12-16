@@ -14,7 +14,7 @@ void test_quick(int n, int seed, ofstream &results_file)
     srand(seed);
     for (int i = 0; i < n; i++)
     {
-        A[i] = rand() % 10000-5000;
+        A[i] = (rand()%100000-50000);
     }
     porownania = 0;
     przypisania = 0;

@@ -17,7 +17,7 @@ void test_bucket(int n, int seed, ofstream &results_file)
     srand(seed);
     for (int i = 0;i<n; i++)
 	{
-        A[i] =(rand()%2000000-1000000)/100.0;
+		A[i] = (double)(rand()%100000-50000)/100.0;
     }
     porownania = 0;
     przypisania = 0;
